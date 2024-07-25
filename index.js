@@ -1,19 +1,19 @@
 const express = require('express');
+const cors = require('cors'); // Import the cors package
 const app = express();
 const port = 3000;
-const BasicEmployeeDetail = require('./models/basicEmployeeDetail'); // Adjust the path if necessary
+const BasicEmployeeDetail = require('./models/basicEmployeeDetail');
 
-app.use(express.json()); // This should be before any route handlers
+app.use(cors()); // Enable CORS for all routes
+app.use(express.json());
 
 // POST request to add a new record
 app.post('/records', async (req, res) => {
   try {
-    console.log('Request Body:', req.body); // Debug log to check incoming data
     const { first_name, last_name, email, position } = req.body;
     const record = await BasicEmployeeDetail.create({ first_name, last_name, email, position });
     res.status(201).json(record);
   } catch (error) {
-    console.error('Error:', error); // Log the error details
     res.status(400).json({ error: error.message });
   }
 });
@@ -25,7 +25,6 @@ app.get('/records', async (req, res) => {
     const records = await BasicEmployeeDetail.findAll();
     res.status(200).json(records);
   } catch (error) {
-    console.error('Error:', error); // Log the error details
     res.status(500).json({ error: error.message });
   }
 });
