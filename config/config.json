@@ -8,15 +8,15 @@
   },
   "test": {
     "username": "root",
-    "password": null,
-    "database": "database_test",
+    "password": "awaze_shaikh",
+    "database": "employees_db",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },
   "production": {
     "username": "root",
-    "password": null,
-    "database": "database_production",
+    "password": "awaze_shaikh",
+    "database": "empoplyees_db",
     "host": "127.0.0.1",
     "dialect": "mysql"
   }
